@@ -29,6 +29,10 @@ export default function App() {
     );
   }
 
+  function handleDeleteAll() {
+    setPackageList((_items) => []);
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -37,6 +41,7 @@ export default function App() {
         packageList={packageList}
         onDeletePackageItem={handleDeletePackageItem}
         onTogglePacked={handleTogglePacked}
+        onDeleteAll={handleDeleteAll}
       />
       <Stats packageList={packageList} />
     </div>
@@ -91,7 +96,7 @@ function Form({ onAddPackageItem }) {
   );
 }
 
-function PackingList({ packageList, onDeletePackageItem, onTogglePacked }) {
+function PackingList({ packageList, onDeletePackageItem, onTogglePacked, onDeleteAll }) {
   const status = {
     input: 'input',
     description: 'description',
@@ -129,7 +134,7 @@ function PackingList({ packageList, onDeletePackageItem, onTogglePacked }) {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
-        <button>Clear list</button>
+        <button onClick={onDeleteAll}>Clear list</button>
       </div>
     </div>
   );
