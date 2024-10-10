@@ -30,7 +30,7 @@ export default function App() {
   }
 
   function handleDeleteAll() {
-    setPackageList((_items) => []);
+    setPackageList([]);
   }
 
   return (
